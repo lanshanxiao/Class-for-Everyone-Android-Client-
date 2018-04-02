@@ -1,0 +1,79 @@
+package com.wanli.swing.action;
+
+import java.io.IOException;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.RequestAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
+import com.wanli.swing.entities.UserBean;
+import com.wanli.swing.service.RegistService;
+
+public class RegistUserAction extends ActionSupport implements RequestAware, ModelDriven<UserBean>, Preparable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//注入RegisterService
+	private RegistService registService;
+	//模型驱动使用的对象
+	private UserBean bean;
+
+	public void setRegistService(RegistService registService) {
+		this.registService = registService;
+	}
+	
+	public void prepareAddUser() {
+		bean = new UserBean();
+	}
+
+	@Override
+	public UserBean getModel() {
+		bean = new UserBean();
+		return bean;
+	}
+
+	private Map<String, Object> request;
+	@Override
+	public void setRequest(Map<String, Object> arg0) {
+		this.request = arg0;
+	}
+
+	@Override
+	public void prepare() throws Exception {}
+	
+	//注册用户执行的方法
+	public String addUser() {
+		
+		registService.addUser(bean);
+		return "adduser";
+	}
+	//ajax进行异步校验用户名是否存在执行的方法
+	public String findByName() throws IOException {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String username = request.getParameter("username");
+		//调用registerService进行查询
+		UserBean existUser = registService.getByUsername(username);
+		System.out.println(existUser);
+		//获得response对象，向页面输出
+		HttpServletResponse response = ServletActionContext.getResponse();
+		//设置字符集编码，可向页面输出中文
+		response.setContentType("text/html;charset=UTF-8");
+		//判断
+		if (existUser != null) {
+			//查询到该用户：用户名已经存在
+			response.getWriter().println("<font color='red'>用户名已经存在</font>");
+		} else {
+			//没有查询到该用户：用户名可以使用
+			response.getWriter().println("<font color='green'>用户名可以使用</font>");
+		}
+		return NONE;
+	}
+}

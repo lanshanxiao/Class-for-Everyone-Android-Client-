@@ -1,0 +1,59 @@
+package com.wanli.swing.action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.RequestAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
+import com.wanli.swing.entities.UserBean;
+import com.wanli.swing.service.RegistService;
+
+public class RegistUserAction extends ActionSupport implements RequestAware, ModelDriven<UserBean>, Preparable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private RegistService registService;
+	private String name;
+	private String password;
+	private UserBean bean;
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setRegistService(RegistService registService) {
+		this.registService = registService;
+	}
+	
+	public void prepareAddUser() {
+		bean = new UserBean();
+	}
+	
+	public String addUser() {
+		registService.addUser(bean);
+		return "adduser";
+	}
+
+	@Override
+	public UserBean getModel() {
+		return bean;
+	}
+
+	private Map<String, Object> request;
+	@Override
+	public void setRequest(Map<String, Object> arg0) {
+		this.request = arg0;
+	}
+
+	@Override
+	public void prepare() throws Exception {}
+	
+}

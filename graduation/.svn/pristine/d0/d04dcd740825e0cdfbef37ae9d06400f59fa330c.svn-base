@@ -1,0 +1,48 @@
+package com.wanli.swing.frame.listener;
+
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+
+import com.wanli.swing.frame.MainFrame;
+
+public class ButtonDownListener extends SelectionAdapter {
+
+	private String btnName;
+	
+	public ButtonDownListener(String btnName) {
+		this.btnName = btnName;
+	}
+	
+	@Override
+    public void widgetSelected(final SelectionEvent e) { //ÄäÃûÀà
+        selected(e);
+    }
+
+	protected void selected(SelectionEvent e) {
+		switch (btnName) {
+		case "first":
+			MainFrame.index = 1;
+			MainFrame.text.setText(MainFrame.questions[MainFrame.index]);
+			break;
+		case "previous":
+			if (MainFrame.index > 1) {
+				MainFrame.index -= 1;				
+			}
+			MainFrame.text.setText(MainFrame.questions[MainFrame.index]);
+			break;
+		case "next":
+			if (MainFrame.index < MainFrame.questions.length - 1) {
+				MainFrame.index += 1;				
+			}
+			MainFrame.text.setText(MainFrame.questions[MainFrame.index]);
+			break;
+		case "last":
+			MainFrame.index = MainFrame.questions.length - 1;
+			MainFrame.text.setText(MainFrame.questions[MainFrame.index]);
+			break;
+		default:
+			break;
+		}
+	}
+	
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-3-7 20:00:24 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.wanli.swing.entities.UserBean" table="USERBEAN">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="nickname" type="java.lang.String">
+            <column name="NICKNAME" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="confirmPassword" type="java.lang.String">
+            <column name="CONFIRMPASSWORD" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="veriCode" type="java.lang.String">
+            <column name="VERICODE" />
+        </property>
+    </class>
+</hibernate-mapping>

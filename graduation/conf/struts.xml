@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+
+    <package name="default" namespace="/" extends="struts-default">
+		
+		<!-- 自定义拦截器，设置prepare拦截器的alwaysInvokePrepare值为false -->
+		<interceptors>
+			<interceptor-stack name="sshStack">
+				<interceptor-ref name="paramsPrepareParamsStack">
+					<param name="prepare.alwaysInvokePrepare">false</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 使用新的拦截器栈 -->
+		<default-interceptor-ref name="sshStack"></default-interceptor-ref>
+		
+		<!-- 配置首页访问的Action -->
+		<action name="registUser_*" class="registUserAction" method="{1}">
+			<result name="adduser">/WEB-INF/jsp/registSuccess.jsp</result>
+			<result name="getBackPassword">/WEB-INF/jsp/getBackPassword.jsp</result>
+			<result name="resetPasswordSucc">/WEB-INF/jsp/resetPasswordSucc.jsp</result>
+		</action>
+
+    </package>
+
+</struts>

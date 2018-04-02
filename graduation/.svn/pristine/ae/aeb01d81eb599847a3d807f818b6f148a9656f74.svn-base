@@ -1,0 +1,54 @@
+package com.wanli.swing.frame.listener;
+
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.TabFolder;
+
+public class TabFordlerListener extends SelectionAdapter {
+
+	private TabFolder tabFolder;//选项卡
+	private Button first;//跳转到第一题或第一页
+	private Button previous;//上一题或上一页
+	private Button next;//下一题或下一页
+	private Button last;//最后一题或最后一页
+	
+	public TabFordlerListener(TabFolder tabFolder, Button first, Button previous, Button next, Button last) {
+		this.tabFolder = tabFolder;
+		this.first = first;
+		this.previous = previous;
+		this.next = next;
+		this.last = last;
+	}
+	
+	@Override
+    public void widgetSelected(final SelectionEvent e) { //匿名类
+        handle_tabFolder_widgetSelected(e);
+    }
+	
+	protected void handle_tabFolder_widgetSelected(final SelectionEvent e) {
+		
+		if (tabFolder.getSelectionIndex() == 0) {
+			first.setText("首题");
+			previous.setText("上一题");
+			next.setText("下一题");
+			last.setText("末题");
+		}
+		
+		if (tabFolder.getSelectionIndex() == 1) {
+			first.setText("首页");
+			previous.setText("上一页");
+			next.setText("下一页");
+			last.setText("末页");
+		}
+		
+		if (tabFolder.getSelectionIndex() == 2) {
+			first.setText("首页");
+			previous.setText("上一页");
+			next.setText("下一页");
+			last.setText("末页");
+		}
+		
+	}
+
+}

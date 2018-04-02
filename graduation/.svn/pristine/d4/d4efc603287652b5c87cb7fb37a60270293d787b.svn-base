@@ -1,0 +1,70 @@
+package com.wanli.swing.entities;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class OnlineUser {
+
+	private String username;
+	private String imei;
+	private String inetAddress;
+	private String content;
+	private Socket socket;
+	private BufferedReader br;  
+    private PrintWriter pw;
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getImei() {
+		return imei;
+	}
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Socket getSocket() {
+		return socket;
+	}
+	public void setSocket(Socket socket) {
+		this.socket = socket;
+	}
+	public BufferedReader getBr() {
+		return br;
+	}
+	public void setBr(BufferedReader br) {
+		this.br = br;
+	}
+	public PrintWriter getPw() {
+		return pw;
+	}
+	public void setPw(PrintWriter pw) {
+		this.pw = pw;
+	} 
+	public String getInetAddress() {
+		return inetAddress;
+	}
+	public void setInetAddress(String inetAddress) {
+		this.inetAddress = inetAddress;
+	}
+	public OnlineUser() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public OnlineUser(Socket socket) throws IOException {
+		this.br = new BufferedReader(new InputStreamReader(  
+                socket.getInputStream()));  
+        this.pw = new PrintWriter(socket.getOutputStream());
+	}
+	
+}

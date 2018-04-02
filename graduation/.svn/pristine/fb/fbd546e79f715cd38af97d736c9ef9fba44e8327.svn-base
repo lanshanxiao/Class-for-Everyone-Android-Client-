@@ -1,0 +1,47 @@
+package com.wanli.thread;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.TreeItem;
+
+import com.wanli.classforereryone.server.MyServer;
+import com.wanli.swing.frame.MainFrame;
+
+public class ListeningSocket implements Runnable  {
+
+	int socketNum = 0;
+	
+	public ListeningSocket() {
+		socketNum = MyServer.socketList.size();
+	}
+	
+	@Override
+	public void run() {
+
+		while (true) {
+			if (MainFrame.rooms.size() > 0 && MyServer.socketList.size() > socketNum) {
+//				System.out.println("rooms===>");
+				socketNum = MyServer.socketList.size();
+				Display.getDefault().syncExec(new Runnable(){
+					public void run() {
+						TreeItem treeItem = new TreeItem(MainFrame.rooms.get(0), SWT.NONE);
+						treeItem.setText("°²»Õ");						
+					}
+					
+				});
+			} else {
+				
+			}
+			
+//			System.out.println(MainFrame.rooms.size());
+//			System.out.println(MyServer.socketList.size());
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+}

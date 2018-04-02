@@ -1,0 +1,88 @@
+package com.wanli.swing.frame.listener;
+
+import java.util.List;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.TreeItem;
+
+import com.wanli.swing.frame.MainFrame;
+import com.wanli.swing.service.DBService;
+
+public class TabFordlerListener extends SelectionAdapter {
+
+	private TabFolder tabFolder;//选项卡
+	private Button first;//跳转到第一题或第一页
+	private Button previous;//上一题或上一页
+	private Button next;//下一题或下一页
+	private Button last;//最后一题或最后一页
+	private DBService dbService;
+	private List<String[]> records;
+	private int columnNum = 0;
+	
+	public TabFordlerListener(TabFolder tabFolder, Button first, Button previous, Button next, Button last) {
+		this.tabFolder = tabFolder;
+		this.first = first;
+		this.previous = previous;
+		this.next = next;
+		this.last = last;
+		dbService = new DBService();
+	}
+	
+	@Override
+    public void widgetSelected(final SelectionEvent e) { //匿名类
+        handle_tabFolder_widgetSelected(e);
+    }
+	
+	protected void handle_tabFolder_widgetSelected(final SelectionEvent e) {
+		
+		if (tabFolder.getSelectionIndex() == 0) {
+			first.setText("首题");
+			previous.setText("上一题");
+			next.setText("下一题");
+			last.setText("末题");
+		}
+		
+		if (tabFolder.getSelectionIndex() == 1) {
+			first.setText("首页");
+			previous.setText("上一页");
+			next.setText("下一页");
+			last.setText("末页");
+			if (MainFrame.scoreTab.getColumnCount() != 0) {
+				for (int i = 0; i < MainFrame.scoreTab.getColumnCount(); i++) {
+					MainFrame.scoreTab.getColumns()[MainFrame.scoreTab.getColumnOrder()[0]].dispose();
+				}
+			}
+			if (MainFrame.tableName != null) {
+				columnNum = dbService.getTableColumn(MainFrame.tableName);
+				records = dbService.getScoreData(MainFrame.tableName);
+//				for (String[] record: records) {
+//					for (int i = 0; i < record.length; i++) {
+//						
+//					}
+//				}
+				for (int i = 1; i <= columnNum; i++) {
+					TableColumn Column_name = new TableColumn(MainFrame.scoreTab, SWT.NONE);
+					Column_name.setText("题" + i);
+					Column_name.setWidth(100);
+				}
+			}
+			
+		}
+		
+		if (tabFolder.getSelectionIndex() == 2) {
+			first.setText("首页");
+			previous.setText("上一页");
+			next.setText("下一页");
+			last.setText("末页");
+		}
+		
+	}
+
+}

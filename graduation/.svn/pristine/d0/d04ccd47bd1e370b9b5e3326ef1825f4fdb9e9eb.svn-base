@@ -1,0 +1,29 @@
+package com.wanli.swing.service;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.wanli.swing.dao.RegistDao;
+import com.wanli.swing.entities.UserBean;
+
+@Transactional
+public class RegistService {
+
+	private RegistDao registDao;
+	
+	public void setRegistDao(RegistDao registDao) {
+		this.registDao = registDao;
+	}
+	
+	public void addUser(UserBean bean) {
+		registDao.insert(bean);
+	}
+	
+	public UserBean getUserByBean(UserBean bean) {
+		return registDao.getUserByBean(bean);
+	}
+	
+	public boolean getUserByNameAndPassword(String name, String password) {
+		return registDao.getUserByNameAndPassword(name, password);
+	}
+	
+}

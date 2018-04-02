@@ -1,0 +1,43 @@
+package com.wanli.swing.service;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.wanli.swing.dao.RegistDao;
+import com.wanli.swing.entities.UserBean;
+
+/**
+ * 用户模块服务层代码
+ * @author wanli
+ *
+ */
+@Transactional
+public class RegistService {
+
+	//注入RegistDao
+	private RegistDao registDao;
+	
+	public void setRegistDao(RegistDao registDao) {
+		this.registDao = registDao;
+	}
+	
+	//用户注册
+	public void addUser(UserBean bean) {
+		registDao.insert(bean);
+	}
+	
+	//根据userbean查询用户
+	public UserBean getUserByBean(UserBean bean) {
+		return registDao.getUserByBean(bean);
+	}
+	
+	//根据username和password查询用户
+	public boolean getUserByNameAndPassword(String name, String password) {
+		return registDao.getUserByNameAndPassword(name, password);
+	}
+	
+	//根据username查询用户
+	public UserBean getByUsername(String username) {
+		return registDao.getByUsername(username);
+	}
+	
+}
