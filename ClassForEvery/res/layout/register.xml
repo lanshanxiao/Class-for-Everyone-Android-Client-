@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/background_image" >"
+    
+    <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_weight="2"
+    android:layout_margin="10dp"
+    android:contentDescription="@string/hello"
+    android:scaleType="fitCenter"
+    android:src="@drawable/logo"/>
+    
+	<EditText
+       android:id="@+id/register_username"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:drawableStart="@drawable/account_person"
+       android:hint="@string/hint_register_account"
+       android:textColorHint="#FFFFFF"
+       android:layout_margin="10dp" />
+   
+   
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+<EditText
+	android:id="@+id/register_password_once"
+    android:hint="@string/hint_register_password"
+    android:textColorHint="#FFFFFF"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:inputType="textPassword"
+	android:drawableStart="@drawable/password_lock" />
+<ToggleButton
+    android:id="@+id/registerTogglePwd"
+    android:background="@drawable/password_selector"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_alignParentRight="true"
+    android:layout_margin="10dp"
+    android:textOff=""
+    android:textOn="" />
+</RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp" >
+
+<EditText
+	android:id="@+id/register_password_second"
+    android:hint="@string/hint_register_password_confirm"
+    android:textColorHint="#FFFFFF"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:inputType="textPassword"
+	android:drawableStart="@drawable/password_lock" />
+<ToggleButton
+    android:id="@+id/registerConfirmTogglePwd"
+    android:background="@drawable/password_selector"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_alignParentRight="true"
+    android:layout_margin="10dp"
+    android:textOff=""
+    android:textOn="" />
+</RelativeLayout>
+
+<EditText
+    android:id="@+id/register_email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawableStart="@drawable/email"
+    android:hint="@string/hint_register_email"
+    android:textColorHint="#FFFFFF"
+    android:layout_margin="10dp" />
+
+<EditText
+    android:id="@+id/register_phone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawableStart="@drawable/phone"
+    android:hint="@string/hint_register_phone"
+    android:textColorHint="#FFFFFF"
+    android:layout_margin="10dp" />
+<Button
+	android:id="@+id/buttonRegister"
+	android:text="@string/register"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="@drawable/share_btn"
+	style="?android:attr/buttonBarButtonStyle"
+	android:layout_margin="10dp" />
+
+</LinearLayout>

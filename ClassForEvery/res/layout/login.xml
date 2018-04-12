@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="300dp"
+    android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:layout_gravity="center_horizontal"
-	android:stretchColumns="1">
+	android:stretchColumns="0"
+	android:background="@drawable/background_image">
 
 <ImageView
     android:layout_width="wrap_content"
@@ -22,34 +23,74 @@
 	android:layout_weight="2"
 	android:gravity="center"
 	android:padding="@dimen/title_padding"/>	
+	
 <!-- 输入用户名的行 -->
-<TableRow>
-<TextView
-	android:text="@string/user_name"
-	android:textSize="@dimen/label_font_size"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"/>
+<TableRow
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 <EditText
 	android:id="@+id/userEditText"
+	android:hint="@string/hint_login_account"
+	android:textColorHint="#FFFFFF"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:inputType="text"/>
+	android:inputType="text"
+	android:drawableStart="@drawable/account_person"/>
 </TableRow>
+
 <!-- 输入密码的行 -->
-<TableRow>
-<TextView
-	android:text="@string/user_pass"
-	android:textSize="@dimen/label_font_size"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"/>
+<TableRow
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 <EditText
-	android:text=""
 	android:id="@+id/pwdEditText"
+	android:hint="@string/hint_login_password"
+	android:textColorHint="#FFFFFF"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:inputType="textPassword"/>
+	android:inputType="textPassword"
+	android:drawableStart="@drawable/password_lock"/>
+<ToggleButton
+    android:id="@+id/loginTogglePwd"
+    android:background="@drawable/password_selector"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_alignParentRight="true"
+    android:layout_margin="10dp"
+    android:textOff=""
+    android:textOn="" />
+</RelativeLayout>
 </TableRow>
-<!-- 定义登录、取消按钮的行 -->
+
+<!-- 定义记住密码、修改密码的行 -->
+<LinearLayout android:orientation="horizontal"
+	android:layout_width="wrap_content"
+	android:layout_height="0dp"
+	android:layout_weight="1"
+	android:gravity="center">
+<CheckBox
+    android:id="@+id/Login_Remember"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:checked="false"
+    android:text="@string/hint_login_remember_password"
+    android:gravity="left|center_vertical"
+    android:textSize="15sp" />
+<TextView
+    android:id="@+id/login_text_change_pwd"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="@string/hint_login_change_password"
+    android:gravity="center|center_vertical"
+    android:textSize="15sp" />
+</LinearLayout>
+
+<!-- 定义登录、取消、注册按钮的行 -->
 <LinearLayout android:orientation="horizontal"
 	android:layout_width="wrap_content"
 	android:layout_height="0dp"
@@ -60,18 +101,21 @@
 	android:text="@string/login"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:background="@drawable/share_btn" />
+	android:background="@drawable/share_btn"
+	style="?android:attr/buttonBarButtonStyle" />
 <Button
 	android:id="@+id/bnCancel"
 	android:text="@string/cancel"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:background="@drawable/share_btn" />
+	android:background="@drawable/share_btn"
+	style="?android:attr/buttonBarButtonStyle" />
 <Button
 	android:id="@+id/bnRegister"
 	android:text="@string/register"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:background="@drawable/share_btn" />	
+	android:background="@drawable/share_btn"
+	style="?android:attr/buttonBarButtonStyle" />	
 </LinearLayout>
 </TableLayout>
