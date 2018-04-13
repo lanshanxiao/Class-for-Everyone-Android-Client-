@@ -1,4 +1,4 @@
-package com.wanli.classforevery;
+package com.wanli.page;
 
 import java.io.BufferedReader;
 import java.io.IOException;
