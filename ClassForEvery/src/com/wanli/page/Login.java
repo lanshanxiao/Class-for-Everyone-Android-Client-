@@ -57,7 +57,7 @@ public class Login extends Activity {
 		GetWiFiGateway getWiFiGateway = new GetWiFiGateway(this);
 		String gateway = getWiFiGateway.getGateway();
 		
-//Log.i(gateway, "gateway地址");
+//输出获取的Gateway的IP地址
 Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 
 		//创建连接服务端的线程
@@ -93,16 +93,17 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 	public void login() {
 		//校验账号和密码
 		if (checkUsernameAndPwd()) {
-			String userName = lAccount.getText().toString().trim();
-			String userPassword = lPassword.getText().toString().trim();
+			String userName = getAccount();
+			String userPassword = getPassword();
 			
 			try {
 				//使用“严苛模式”的线程策略，监控线程中的操作
 				StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		        StrictMode.setThreadPolicy(policy);
-		        
-		      //将用户在文本框内输入的内容写入网络
-				os.write(("点击登录按钮！" + "\r\n").getBytes());
+
+		      //将账号密码传到服务端
+				os.write(("2," + userName + "," + userPassword).getBytes());
+				os.flush();  
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.i("ioexception2", "ioexception1");
@@ -132,5 +133,16 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 				
 		return true;
 	}
+	
+	//获取当前登录界面的账号和密码
+	public String getAccount() {
+		String account = lAccount.getText().toString().trim();
 		
+		return account;
+	}
+	public String getPassword() {
+		String password = lPassword.getText().toString().trim();
+		
+		return password;
+	}
 }

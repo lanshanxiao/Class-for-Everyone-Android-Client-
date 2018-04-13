@@ -22,7 +22,8 @@
        android:drawableStart="@drawable/account_person"
        android:hint="@string/hint_register_account"
        android:textColorHint="#FFFFFF"
-       android:layout_margin="10dp" />
+       android:layout_margin="10dp"
+       android:drawablePadding="10dp" />
    
    
 <RelativeLayout
@@ -36,7 +37,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:inputType="textPassword"
-	android:drawableStart="@drawable/password_lock" />
+	android:drawableStart="@drawable/password_lock"
+	android:drawablePadding="10dp" />
 <ToggleButton
     android:id="@+id/registerTogglePwd"
     android:background="@drawable/password_selector"
@@ -60,7 +62,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:inputType="textPassword"
-	android:drawableStart="@drawable/password_lock" />
+	android:drawableStart="@drawable/password_lock"
+	android:drawablePadding="10dp" />
 <ToggleButton
     android:id="@+id/registerConfirmTogglePwd"
     android:background="@drawable/password_selector"
@@ -79,7 +82,8 @@
     android:drawableStart="@drawable/email"
     android:hint="@string/hint_register_email"
     android:textColorHint="#FFFFFF"
-    android:layout_margin="10dp" />
+    android:layout_margin="10dp"
+    android:drawablePadding="10dp" />
 
 <EditText
     android:id="@+id/register_phone"
@@ -88,7 +92,8 @@
     android:drawableStart="@drawable/phone"
     android:hint="@string/hint_register_phone"
     android:textColorHint="#FFFFFF"
-    android:layout_margin="10dp" />
+    android:layout_margin="10dp"
+    android:drawablePadding="10dp" />
 <Button
 	android:id="@+id/buttonRegister"
 	android:text="@string/register"

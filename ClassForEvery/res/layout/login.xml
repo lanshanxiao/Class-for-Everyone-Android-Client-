@@ -35,7 +35,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:inputType="text"
-	android:drawableStart="@drawable/account_person"/>
+	android:drawableLeft="@drawable/account_person"
+	android:drawablePadding="10dp"/>
 </TableRow>
 
 <!-- 输入密码的行 -->
@@ -44,7 +45,7 @@
     android:layout_height="wrap_content" >
 <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 <EditText
 	android:id="@+id/pwdEditText"
 	android:hint="@string/hint_login_password"
@@ -52,7 +53,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:inputType="textPassword"
-	android:drawableStart="@drawable/password_lock"/>
+	android:drawableStart="@drawable/password_lock"
+	android:drawablePadding="10dp"/>
 <ToggleButton
     android:id="@+id/loginTogglePwd"
     android:background="@drawable/password_selector"
@@ -70,7 +72,8 @@
 	android:layout_width="wrap_content"
 	android:layout_height="0dp"
 	android:layout_weight="1"
-	android:gravity="center">
+	android:gravity="center"
+	android:layout_margin="10dp">
 <CheckBox
     android:id="@+id/Login_Remember"
     android:layout_width="0dp"
@@ -86,7 +89,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:text="@string/hint_login_change_password"
-    android:gravity="center|center_vertical"
+    android:gravity="right|center_vertical"
     android:textSize="15sp" />
 </LinearLayout>
 
