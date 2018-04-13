@@ -101,9 +101,12 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 				StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		        StrictMode.setThreadPolicy(policy);
 
+		        String sendData = "2," + userName + "," + userPassword + "\r\n";
 		      //将账号密码传到服务端
-				os.write(("2," + userName + "," + userPassword).getBytes());
-				os.flush();  
+				os.write((sendData).getBytes());
+				os.flush(); 
+//输出发送到服务端的账号密码
+Toast.makeText(this, sendData, Toast.LENGTH_SHORT).show();
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.i("ioexception2", "ioexception1");
