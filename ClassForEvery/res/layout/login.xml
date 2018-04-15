@@ -104,13 +104,7 @@
 	android:text="@string/login"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:background="@drawable/share_btn"
-	style="?android:attr/buttonBarButtonStyle" />
-<Button
-	android:id="@+id/bnCancel"
-	android:text="@string/cancel"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
+	android:layout_weight="1"
 	android:background="@drawable/share_btn"
 	style="?android:attr/buttonBarButtonStyle" />
 <Button
@@ -118,6 +112,7 @@
 	android:text="@string/register"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
+	android:layout_weight="1"
 	android:background="@drawable/share_btn"
 	style="?android:attr/buttonBarButtonStyle" />	
 </LinearLayout>

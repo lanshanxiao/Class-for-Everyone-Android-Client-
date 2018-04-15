@@ -7,6 +7,7 @@
     <string name="login">登录</string>
     <string name="cancel">取消</string>
     <string name="register">注册</string>
+    <string name="back">返回</string>
     
     <string name="hint_login_account">手机号/邮箱</string>
     <string name="hint_login_password">6~16个字符,区分大小写</string>
@@ -19,8 +20,14 @@
     <string name="hint_register_email">邮箱</string>
     <string name="hint_register_phone">手机号</string>
     
-    <string name="account_empty">用户名为空，请重新输入！</string>
+    <string name="account_empty">账号为空，请重新输入！</string>
+    <string name="account_wrong">账号格式错误，请重新输入！</string>
 	<string name="password_empty">密码为空，请重新输入！</string>
 	<string name="password_length_wrong">密码长度不符合规范，请重新输入！</string>
+	<string name="password_equal_wrong">密码和确认密码不相同，请重新输入！</string>
+	<string name="email_empty">邮箱为空，请重新输入！</string>
+	<string name="email_wrong">邮箱格式错误，请重新输入！</string>
+	<string name="phone_empty">手机号为空，请重新输入！</string>
+	<string name="phone_length_wrong">手机号错误，请重新输入！</string>
 	
 </resources>
