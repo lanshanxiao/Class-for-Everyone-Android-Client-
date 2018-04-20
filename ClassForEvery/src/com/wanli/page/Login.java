@@ -194,13 +194,6 @@ Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
 	
 	//点击注册按钮触发的事件
 	private void register() {
-		
-		try {
-			//关闭连接
-			ConnectionSocket.connSocket.close();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
 		Intent intent = new Intent(Login.this, Register.class);
 		startActivity(intent);
 		finish();
@@ -276,14 +269,7 @@ Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
 //		lChangePwd.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 //	}
 	
-	private void forget_password() {
-		try {
-			//关闭连接
-			ConnectionSocket.connSocket.close();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}
-		
+	private void forget_password() {		
 		Intent intent = new Intent(Login.this, ForgetPassword.class);
 		startActivity(intent);
 		finish();
@@ -294,8 +280,6 @@ Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
 		try {
 			while((s = ConnectionSocket.br.readLine()) != null) {
 		    	if(s == "2") {
-		    		//关闭连接
-		    		ConnectionSocket.connSocket.close();
 		    		
 		    		return true;
 		    	}
