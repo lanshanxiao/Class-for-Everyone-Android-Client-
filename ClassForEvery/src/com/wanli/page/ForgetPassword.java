@@ -1,8 +1,12 @@
 package com.wanli.page;
 
+import com.aliyuncs.exceptions.ClientException;
 import com.wanli.classforevery.R;
+import com.wanli.requestverification.RequestMessage;
+import com.wanli.requestverification.RequestEmail;
 import com.wanli.socket.ConnectionSocket;
 import com.wanli.socket.GetWiFiGateway;
+import com.wanli.requestverification.Randomutil;
 import com.wanli.verification.VerifyEmail;
 import com.wanli.verification.VerifyPhone;
 
@@ -25,6 +29,9 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class ForgetPassword extends Activity {
+	
+	//存储验证码
+	private String randomNum;
 	
 	//忘记密码界面上控件
 	private TextView fPrevious;//1.上一步
@@ -137,15 +144,23 @@ Toast.makeText(this, sendForgetPasswordData, Toast.LENGTH_SHORT).show();
 		if ( VerifyEmail.isEmail(userName) ) {
 			
 			Toast.makeText(this, getString(R.string.email_reveice), Toast.LENGTH_SHORT).show();
+			
+			//邮箱获取验证码函数
+			requestEmailCode();
+			
 			timer.start();
 			
-			//邮箱获取验证码函数requestEmailCode();
+			
 		} else if ( VerifyPhone.isMobileNO(userName) ) {
 			
 			Toast.makeText(this, getString(R.string.message_reveice), Toast.LENGTH_SHORT).show();
+			
+			//短信获取验证码函数
+			requestPhoneCode();
+			
+			//计时开始
 			timer.start();
 			
-			//短信获取验证码函数requestPhoneCode();
 		} else {
 			Toast.makeText(this, getString(R.string.account_wrong), Toast.LENGTH_SHORT).show();
 		}
@@ -159,7 +174,14 @@ Toast.makeText(this, sendForgetPasswordData, Toast.LENGTH_SHORT).show();
 	//判断验证码是否正确
 	private boolean codeIsTrue(String code) {
 		
-		return true;
+		if(code == randomNum) {
+			return true;
+		} else {
+			Toast.makeText(this, getString(R.string.code_wrong), Toast.LENGTH_SHORT).show();
+			
+			return false;
+		}
+
 	}
 	
 	/**
@@ -189,6 +211,29 @@ Toast.makeText(this, sendForgetPasswordData, Toast.LENGTH_SHORT).show();
 	//获取验证码
 	private String getCode() {
 		return fInputCode.getText().toString().trim();
+	}
+	
+	//获取短信验证码
+	private void requestPhoneCode() {
+		
+		String username = getAccount();
+		randomNum = Randomutil.getRandom();
+		
+		try {
+			RequestMessage.sendSms(username, randomNum);
+		} catch (ClientException e) {
+			e.printStackTrace();
+			System.out.println("短信发送失败");
+		}
+	}
+	
+	//获取邮箱验证码
+	private void requestEmailCode() {
+		
+		String toAddr = getAccount();
+		randomNum = Randomutil.getRandom();
+		
+		RequestEmail.sendMail(toAddr, randomNum);
 	}
 	
 }
