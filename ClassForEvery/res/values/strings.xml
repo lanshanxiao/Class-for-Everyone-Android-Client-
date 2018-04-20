@@ -42,4 +42,6 @@
 	<string name="code_wrong">验证码错误请重新输入或获取！</string>
 	<string name="account_not_exist">账号不存在，请注册！</string>
 	
+	<string name="login_failure">登录失败！</string>
+	
 </resources>

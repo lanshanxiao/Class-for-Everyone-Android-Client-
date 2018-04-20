@@ -1,5 +1,7 @@
 package com.wanli.page;
 
+import java.io.IOException;
+
 import com.wanli.classforevery.R;
 import com.wanli.socket.ConnectionSocket;
 import com.wanli.socket.GetWiFiGateway;
@@ -122,16 +124,7 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 			String userName = getAccount();
 			String userPassword = getPassword();
 			
-			//跳转界面
-			if ( true ) {
-				Intent intent = new Intent(Login.this, MainActivity.class);
-				startActivity(intent);
-				finish();
-			} else {
-				System.out.println("登录失败！");
-			}
-			
-/*			try {
+			try {
 				//使用“严苛模式”的线程策略，监控线程中的操作
 				StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		        StrictMode.setThreadPolicy(policy);
@@ -140,6 +133,16 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 		      //将账号密码传到服务端
 				ConnectionSocket.os.write((sendLoginData).getBytes());
 				ConnectionSocket.os.flush(); 
+				
+				//跳转主功能界面
+				if ( loginIsSuccess() ) {
+					Intent intent = new Intent(Login.this, MainActivity.class);
+					startActivity(intent);
+					finish();
+				} else {
+					Toast.makeText(this, getString(R.string.login_failure), Toast.LENGTH_SHORT).show();
+				}
+				
 
 //输出发送到服务端的账号密码
 Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();		
@@ -148,7 +151,7 @@ Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
 				e.printStackTrace();
 				Log.i("ioexception2", "ioexception1");
 			}
-*/
+
 		}
 	}
 	
@@ -191,6 +194,13 @@ Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
 	
 	//点击注册按钮触发的事件
 	private void register() {
+		
+		try {
+			//关闭连接
+			ConnectionSocket.connSocket.close();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
 		Intent intent = new Intent(Login.this, Register.class);
 		startActivity(intent);
 		finish();
@@ -267,9 +277,33 @@ Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
 //	}
 	
 	private void forget_password() {
+		try {
+			//关闭连接
+			ConnectionSocket.connSocket.close();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
 		Intent intent = new Intent(Login.this, ForgetPassword.class);
 		startActivity(intent);
 		finish();
 	}
-
+	
+	private boolean loginIsSuccess() {
+		String s = "";    
+		try {
+			while((s = ConnectionSocket.br.readLine()) != null) {
+		    	if(s == "2") {
+		    		//关闭连接
+		    		ConnectionSocket.connSocket.close();
+		    		
+		    		return true;
+		    	}
+		    }
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
+		return false;  
+	}
 }
