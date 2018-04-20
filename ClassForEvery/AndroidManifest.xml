@@ -33,7 +33,22 @@
         <activity 
             android:name="com.wanli.page.Register"
             android:screenOrientation="portrait" >  
-        </activity>r
+        </activity>
+        
+        <activity 
+            android:name="com.wanli.page.ForgetPassword"
+            android:screenOrientation="portrait" >  
+        </activity>
+        
+        <activity 
+            android:name="com.wanli.page.ModifyPassword"
+            android:screenOrientation="portrait" >  
+        </activity>
+        
+        <activity 
+            android:name="com.wanli.page.MainActivity"
+            android:screenOrientation="portrait" >  
+        </activity>
     </application>
 
 </manifest>

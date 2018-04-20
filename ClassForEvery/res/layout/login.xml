@@ -89,6 +89,9 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:text="@string/hint_login_change_password"
+    android:textColor="#FF0000"
+    android:textStyle="italic"
+    android:clickable="true"
     android:gravity="right|center_vertical"
     android:textSize="15sp" />
 </LinearLayout>

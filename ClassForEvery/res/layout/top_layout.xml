@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="match_parent"  
+    android:layout_height="45dp" 
+    android:background="@drawable/black_background">  
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="ClassForEveryone"
+        android:layout_centerVertical="true"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+  
+    <ImageButton   
+        android:id="@+id/top_add"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:background="@drawable/add"  
+        android:layout_centerVertical="true"  
+        android:layout_alignParentRight="true"  
+        />  
+       <ImageButton   
+        android:id="@+id/search"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:background="@drawable/search"  
+        android:layout_centerVertical="true"  
+        android:layout_toLeftOf="@id/top_add"  
+        />  
+</RelativeLayout>

@@ -1,7 +1,5 @@
 package com.wanli.page;
 
-import java.io.OutputStream;
-
 import com.wanli.classforevery.R;
 import com.wanli.socket.ConnectionSocket;
 import com.wanli.socket.GetWiFiGateway;
@@ -11,6 +9,7 @@ import com.wanli.verification.VerifyPhone;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.method.HideReturnsTransformationMethod;
@@ -71,11 +70,15 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 		//第一次运行该软件，设置CheckBox
 		firstRunAPP();
 		
+		//为忘记密码设置样式
+		//setStyles();
+		
 		//为按钮注册监听器
 		lBtnLogin.setOnClickListener(lListener);
 		lBtnRegister.setOnClickListener(lListener);
 		lTogglePwd.setOnClickListener(lListener);
 		lRememberPwd.setOnClickListener(lListener);
+		lChangePwd.setOnClickListener(lListener);
 	}
 	
 	//不同按钮按下的监听事件选择
@@ -95,6 +98,7 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 				break;
 				
 			case R.id.login_text_change_pwd:
+				forget_password();
 				break;
 			
 			case R.id.loginTogglePwd:
@@ -118,7 +122,16 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 			String userName = getAccount();
 			String userPassword = getPassword();
 			
-			try {
+			//跳转界面
+			if ( true ) {
+				Intent intent = new Intent(Login.this, MainActivity.class);
+				startActivity(intent);
+				finish();
+			} else {
+				System.out.println("登录失败！");
+			}
+			
+/*			try {
 				//使用“严苛模式”的线程策略，监控线程中的操作
 				StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		        StrictMode.setThreadPolicy(policy);
@@ -127,12 +140,15 @@ Toast.makeText(this, gateway, Toast.LENGTH_SHORT).show();
 		      //将账号密码传到服务端
 				ConnectionSocket.os.write((sendLoginData).getBytes());
 				ConnectionSocket.os.flush(); 
+
 //输出发送到服务端的账号密码
-Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
+Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();		
+
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.i("ioexception2", "ioexception1");
 			}
+*/
 		}
 	}
 	
@@ -242,6 +258,18 @@ Toast.makeText(this, sendLoginData, Toast.LENGTH_SHORT).show();
 		}
 		
 		return true;
+	}
+	
+	//这种方式是在代码中添加下划线，也可以在strings中实现，添加<u>标签
+//	private void setStyles() {
+//		//添加下划线
+//		lChangePwd.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+//	}
+	
+	private void forget_password() {
+		Intent intent = new Intent(Login.this, ForgetPassword.class);
+		startActivity(intent);
+		finish();
 	}
 
 }

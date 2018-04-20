@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="match_parent"  
+    android:layout_height="60dp"  
+    android:orientation="horizontal"
+    android:background="@drawable/gray_background" >  
+   
+    <LinearLayout  
+        android:id="@+id/id_classroom"  
+        android:layout_width="0dp"  
+        android:layout_height="match_parent"  
+        android:layout_weight="1"  
+        android:gravity="center"  
+        android:orientation="vertical" >  
+ <!-- android:clickable="false" 是为了防止ImageButton截取了触摸事件 ，这里事件要给它的上一级linearlayout-->  
+        <ImageButton  
+             android:id="@+id/btn_classroom"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:background="#00000000"  
+            android:clickable="false"  
+            android:src="@drawable/classroom2" />  
+  
+        <TextView  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:text="教室"  
+          />  
+    </LinearLayout>  
+  
+    <LinearLayout  
+         android:id="@+id/id_answer"  
+        android:layout_width="0dp"  
+        android:layout_height="match_parent"  
+        android:layout_weight="1"  
+        android:gravity="center"  
+        android:orientation="vertical" >  
+  
+        <ImageButton  
+             android:id="@+id/btn_answer"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:background="#00000000"  
+             android:clickable="false"  
+            android:src="@drawable/answer" />  
+  
+        <TextView  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:text="问答"  
+          />  
+    </LinearLayout>  
+  
+    <LinearLayout  
+        android:id="@+id/id_question"  
+        android:layout_width="0dp"  
+        android:layout_height="match_parent"  
+        android:layout_weight="1"  
+        android:gravity="center"  
+        android:orientation="vertical" >  
+  
+        <ImageButton  
+             android:id="@+id/btn_question"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:background="#00000000"  
+             android:clickable="false"  
+            android:src="@drawable/question" />  
+  
+        <TextView  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:text="提问"  
+   />  
+    </LinearLayout>  
+  
+    <LinearLayout  
+        android:id="@+id/id_personal"  
+        android:layout_width="0dp"  
+        android:layout_height="match_parent"  
+        android:layout_weight="1"  
+        android:gravity="center"  
+        android:orientation="vertical" >  
+  
+        <ImageButton  
+             android:id="@+id/btn_personal"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:background="#00000000"  
+            android:clickable="false"  
+            android:src="@drawable/personal" />  
+  
+        <TextView  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:text="个人中心"  
+            />  
+    </LinearLayout>  
+  
+</LinearLayout>  
